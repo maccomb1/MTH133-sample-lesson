@@ -13,8 +13,13 @@
   </ul>
 </objectives>
 
+<p>
+We are coming from a chapter focused on integration. At this point, you’ve built up a strong intuition 
+for how to tackle most integrals you encounter. So let’s start today with a problem that looks familiar... but hides a deeper challenge.
+</p>
+
 <activity xml:id="intro-series-hook">
-  <title>10 - minute Warmup</title>
+  <title>(10 Minute) -- Warmup</title>
   <introduction>
     <p>
       To begin our exploration of infinite series, let's consider the integral <me>\int \frac{\sin x}{x}\,dx</me>.
@@ -51,25 +56,607 @@
 
       <figure xml:id="wolfram1">
         <caption>Showing the result of <m>\displaystyle \int \dfrac{\sin x}{x}~dx</m> in Wolfram Alpha</caption>
-  <sidebyside widths="80%">
-    <image source="images/si(x).png" />
-  </sidebyside>
+    <image source="images/si(x).PNG" width="80%"/>
 </figure>
 
 
       <p>
         So, what can we do when integration fails to give us a simple formula?
-        This is where the idea of representing a function as an <term>infinite polynomial</term>—a power series—comes in.
+        This is where the idea of representing a function as an infinite polynomial (<term>a power series</term>) comes in!
       </p>
     </solution>
   </task>
 
+</activity>
+
+<p>
+The integral we just explored hinted that our familiar tools sometimes fall short. 
+To find new ones, we need to broaden our notion of what it means to “add things up.” 
+It might sound strange, but adding up <em>infinitely many</em> terms can sometimes make 
+perfect sense and even produce nice reasonable (finite) values. To showcase this, let’s explore a simple example.
+</p>
+
+
+<activity xml:id="finite-vs-infinite-sums">
+  <title>(5 Minute) --  Infinite Sums</title>
+
+  <introduction>
+      <p>
+        Consider the sum:
+        <me> \dfrac{1}{2} + \dfrac{1}{4} + \dfrac{1}{8} + \dfrac{1}{16} + \cdots</me>
+      </p>
+  </introduction>
+
+  <task>
+    <statement>
+
+      <p>
+        Represent this quantity geometrically by: 
+        <ul>
+          <li>Sketch a large 1 by 1 square on your paper, which has an area of 1.</li>
+          <li>Shade half of it to represent <m>\dfrac{1}{2}</m>.</li>
+          <li>Then shade half of the remaining space for <m>\dfrac{1}{4}</m>, then half again for <m>\dfrac{1}{8}</m>, and continue the pattern.</li>
+        </ul>
+      </p>
+
+    </statement>
+  </task>
+
+  <task>
+    <statement>
+      <p>
+        What do you notice as you continue? 
+        How much of the square will be shaded if we keep repeating this process forever?
+      </p>
+    </statement>
+  </task>
+
+
+<task>
+    <statement>
+      <p>
+        We have just reasoned out that the infinite sum:  
+        <me> \dfrac{1}{2} + \dfrac{1}{4} + \dfrac{1}{8} + \dfrac{1}{16} + \cdots =\; ?</me>        
+        Verify that you have the same answer as your neighbor before checking the <alert>Solution</alert> below.
+      </p>
+    </statement>
 
 
 
+    <solution>
+<p>
+As you continue shading, each new step fills in half of whatever portion of the square remains unshaded. 
+If you repeat this process indefinitely, you will come arbitrarily close to shading the entire square.
+</p>
+
+      <sidebyside width = "70%">
+<figure>
+  <caption>
+    Shading in the box
+  </caption>
+  <image width = "100%" source="images/boxGif.gif">
+  </image>
+</figure>
+</sidebyside>
+
+
+
+<p>
+This visual demonstrates that adding more and more pieces brings us closer and closer to a total area of 1. 
+If the process continued forever, the shaded area would become indistinguishable from the full square itself. 
+Therefore,
+<me>\dfrac{1}{2} + \dfrac{1}{4} + \dfrac{1}{8} + \dfrac{1}{16} + \cdots = 1.</me>
+</p>
+
+
+
+    </solution>
+  </task>
+</activity>
+
+<p>
+Just as our study of arithmetic began with performing operations on numbers (adding, subtracting, and so on) 
+and then expanded to performing those same operations on functions involving variables like <m>x</m>, we can now take the next step. 
+Since we’ve seen that adding infinitely many numbers can sometimes produce a meaningful result, it’s natural to ask: 
+what happens if we add infinitely many powers of <m>x</m>? 
+This idea leads us to the concept of an <term>infinite polynomial</term>, more formally known as a <term>power series</term>.
+</p>
+
+
+<definition xml:id="def-power-series-0">
+  <title>Power Series Centered at 0</title>
+  <statement>
+    <p>
+      A <term>power series</term> is an infinite polynomial  of the form
+      <me>
+        f(x) = a_0 + a_1x + a_2x^2 + a_3x^3 + \cdots  
+      </me>
+      where the coefficients <m>a_n</m> are constants and <m>x</m> is the variable.
+    </p>
+  </statement>
+</definition>
+
+  <remark>
+    <title>The Center of a Power Series</title>
+    
+    
+    <p>
+      Technically, this is a <term>power series centered at 0</term>. 
+      Later, we will extend the idea to series centered at other points, such as <m>x = a</m>. 
+      For now, we will focus on series centered at 0, and by convention, if the center is not specified, it is understood to be 0.
+    </p>
+  </remark>
+
+<definition xml:id="def-maclaurin-series">
+  <title>Maclaurin Series</title>
+  <statement>
+    <p>
+      A <term>Maclaurin series</term> is a specific type of power series. When creating a Maclaurin series, each coefficient 
+      is determined 
+      so that the polynomial and the original function share the same value and <em>all</em> matching derivatives at <m>x = 0</m>. 
+      This ensures that the series “behaves like” the function near the origin.
+    </p>
+  </statement>
+</definition>
+
+<p>
+To see how this definition works in practice, let’s create a Maclaurin series together! 
+</p>
+
+<example xml:id="ex-maclaurin-sin">
+  <title>(Together as Class) -- Maclaurin Series for <m>\sin(x)</m></title>
+  <statement>
+    <p>
+      Find the first 5 terms of the Maclaurin series for <m>f(x) = \sin(x)</m>. 
+    </p>
+  </statement>
+
+  <solution>
+    <p> <alert> This solution is for instructors only and would be removed for the student facing document. The intent is for
+      this problem to be done in class together. </alert>
+    </p>
+  <p>
+    Let <m>f(x)=\sin(x)</m> and suppose a Maclaurin polynomial
+  </p>
+  <me>
+    P(x)=a_0 + a_1 x + a_2 x^2 + a_3 x^3 + a_4 x^4 + a_5 x^5 + \cdots
+  </me>
+
+  <p>
+    We want the value and <em>all</em> matching derivatives to agree at <m>x=0</m>.
+  </p>
+
+  <p>
+    <em>Match the value:</em><br/>
+    We want <m>f(0)=P(0)</m> so
+  </p>
+  <p>
+    <m>\sin(0)=a_0 + 0 + 0 + \cdots</m> hence <m>0=a_0</m>.
+  </p>
+
+  <p>
+    <em>Match the first derivative:</em><br/>
+    We want <m>f'(0)=P'(0)</m>. Compute
+  </p>
+  <p>
+    <m>f'(x)=\cos(x)</m> and <m>P'(x)=a_1 + 2a_2 x + 3a_3 x^2 + 4a_4 x^3 + 5a_5 x^4 + \cdots</m>.
+  </p>
+  <p>
+    Plugging in <m>x=0</m> gives <m>\cos(0)=0 + a_1 + 0 + 0 + \cdots</m>, so <m>1=a_1</m>.
+  </p>
+
+  <p>
+    <em>Match the second derivative:</em><br/>
+    <m>f''(x)=-\sin(x)</m> and <m>P''(x)=2a_2 + 6a_3 x + 12a_4 x^2 + 20a_5 x^3 + \cdots</m>.
+  </p>
+  <p>
+    At <m>x=0</m>: <m>-\sin(0)=2a_2</m>, so <m>0=2a_2</m> and thus <m>a_2=0</m>.
+  </p>
+
+  <p>
+    <em>Match the third derivative:</em><br/>
+    <m>f^{(3)}(x)=-\cos(x)</m> and <m>P^{(3)}(x)=6a_3 + 24a_4 x + 60a_5 x^2 + \cdots</m>.
+  </p>
+  <p>
+    At <m>x=0</m>: <m>-\cos(0)=6a_3</m>, so <m>-1=6a_3</m> and <m>a_3=-\dfrac{1}{6}</m>.
+  </p>
+
+  <p>
+    <em>Match the fourth derivative:</em><br/>
+    <m>f^{(4)}(x)=\sin(x)</m> and <m>P^{(4)}(x)=24a_4 + 120a_5 x + \cdots</m>.
+  </p>
+  <p>
+    At <m>x=0</m>: <m>\sin(0)=24a_4</m>, so <m>0=24a_4</m> and <m>a_4=0</m>.
+  </p>
+
+  <p>
+    <em>Match the fifth derivative:</em><br/>
+    <m>f^{(5)}(x)=\cos(x)</m> and <m>P^{(5)}(x)=120a_5 + \cdots</m>.
+  </p>
+  <p>
+    At <m>x=0</m>: <m>\cos(0)=120a_5</m>, so <m>1=120a_5</m> and <m>a_5=\dfrac{1}{120}</m>.
+  </p>
+
+  <p>
+    Substituting these into <m>P(x)</m> gives, term by term,
+  </p>
+  <me>
+    \sin(x) =x - \frac{x^3}{6} + \frac{x^5}{120} - \cdots
+  </me>
+</solution>
+
+  <answer>
+    <p>
+      <me>
+        \sin(x) = x - \frac{x^3}{6} + \frac{x^5}{120} + \cdots
+      </me>
+    </p>
+  </answer>
+
+</example>
+
+<p>
+Stopping after a certain number of terms and using that polynomial to approximate the function has a name!
+</p>
+
+
+<definition xml:id="def-maclaurin-polynomial">
+  <title>Maclaurin Polynomial</title>
+  <statement>
+    <p>
+      A <term>Maclaurin polynomial</term> is formed by stopping a Maclaurin series after a finite number of terms. 
+      The resulting polynomial can be used to approximate the function near <m>x = 0</m>.
+    </p>
+    <p> Our answer from <xref ref="ex-maclaurin-sin" /> would be called the "5th degree Maclaurin polynomial of sin(x)"
+    </p>
+
+  </statement>
+
+</definition>
+
+  <remark>
+    <title>Accuracy</title>
+    
+    
+    <p>
+      The Maclaurin polynomial provides a practical approximation to the original function when only a few terms are used. 
+      Including more terms generally makes the approximation more accurate near the origin.
+    </p>
+  </remark>
+
+
+
+
+
+<activity xml:id="desmos-sin-maclaurin">
+  <title>(5 Minute) --  Desmos Exploration</title>
+
+  <introduction>
+    <p>
+      In this activity you will compare <m>\sin(x)</m> with its Maclaurin polynomial approximations using Desmos. 
+    </p>
+  </introduction>
+
+  <task>
+    <statement>
+      <p>
+        Open <url href="https://www.desmos.com/calculator/jxah1hzkwn">Desmos Graphing Calculator</url>. 
+      </p>
+      <p>
+        <ul>
+          <li>
+            <p>
+              Toggle on the <m>P_1(x)</m> (the first degree Maclaurin polynomial for <m>\sin(x)</m>). 
+            </p>
+          </li>
+          <li>
+            <p>
+              Then, toggle on the <m>P_3(x)</m> (the third degree Maclaurin polynomial for <m>\sin(x)</m>). 
+            </p>
+          </li>
+          <li>
+            <p>
+                  Finally, toggle on the <m>P_5(x)</m> (the fifth degree Maclaurin polynomial for <m>\sin(x)</m>) that we discovered in <xref ref="ex-maclaurin-sin" />.
+    
+            </p>
+          </li>
+        </ul>
+        
+        
+      </p>
+    </statement>
+  </task>
+
+  <task>
+    <statement>
+      <p>
+        We have also included the Desmos code for <m>P_{10}(x)</m> and <m>P_{100}(x)</m> as well.  Toggle these on to see what would 
+      happen if we were to keep going!   </p>
+    </statement>
+  </task>
+
+  <task>
+    <statement>
+      <p>
+        Describe in words how the Maclaurin polynomail graph changes as we add more terms. 
+      </p>
+    </statement>
+
+  <answer>
+    <p>
+      As more terms are added, each higher-degree Maclaurin polynomial matches <m>\sin(x)</m> more closely near the origin. 
+      The curve of the polynomial begins to follow the shape of the sine wave for a wider interval before it starts to diverge. 
+      In other words, the approximation becomes more accurate not only at <m>x = 0</m> but also over a larger region around it.
+    </p>
+    <p>
+      For example, <m>P_1(x) = x</m> only matches <m>\sin(x)</m> very close to 0, 
+      while <m>P_3(x)</m> and <m>P_5(x)</m> capture more of the curvature. 
+      By the time we reach <m>P_{10}(x)</m> or even <m>P_{100}(x)</m>, the polynomial is nearly indistinguishable from <m>\sin(x)</m> 
+      across most of the graphing window before eventually diverging for very large <m>x</m>.
+    </p>
+  </answer>    
+  </task>
 </activity>
 
 
+<p>
+As we’ve just seen, the graphs of the Maclaurin polynomials and the function <m>\sin(x)</m> lie very close together when <m>x</m> is near 0. 
+Because the curves are so similar in that region, their function values are also nearly the same. 
+This reveals one of the main uses of Maclaurin series and polynomials... using them to approximate the values of more complicated functions.
+</p>
+
+
+<example xml:id="ex-sin-approx">
+  <title>(Together as Class) -- Approximating Using a Maclaurin Polynomial</title>
+  <statement>
+    <p>
+      Use the 3rd-degree Maclaurin polynomial for <m>\sin(x)</m>
+      <me>P_3(x) = x - \dfrac{x^3}{6}</me>
+      to approximate <m>\sin(0.5)</m>.
+    </p>
+  </statement>
+
+  <answer>
+    <p>
+      Substitute <m>x = 0.5</m> into <m>P_3(x)</m>:
+      <me>
+        P_3(0.5) = 0.5 - \frac{(0.5)^3}{6} = \frac{23}{48} \approx 0.479167.
+      </me>
+    </p>
+
+    <p>
+      Using a calculator, <m>\sin(0.5) \approx 0.479426.</m>
+      The approximation from <m>P_3(x)</m> differs by less than <m>0.0003</m>,
+      showing that even a 3rd-degree Maclaurin polynomial gives a very accurate estimate near <m>x = 0</m>.
+    </p>
+
+    <p>
+      Graphically here is our result:
+    </p>
+
+
+<figure>
+  <caption>
+    Zooming in on <m>\sin(0.5)</m> and <m>P_3(0.5)</m>
+  </caption>
+  <image width = "100%" source="images/133sineGif.gif">
+  </image>
+</figure>
+
+  </answer>
+</example>
+
+<p>
+Everything we’ve explored today, from discovering that <m>\displaystyle \int \frac{\sin x}{x}\,dx</m> has no simple formula, 
+to realizing that infinite sums can approximate functions, and finally learning how to build Maclaurin Series...  
+has been leading to this moment! 
+We now have the tools to tackle a problem that once seemed impossible. 
+By using our Maclaurin polynomial, we can approximate not just function values like <m>\sin(0.5)</m>, 
+but even the integral that started our entire discussion.
+</p>
+
+
+
+<example xml:id="ex-sinx-over-x-approx">
+  <title>(Together as Class) -- Approximating Integrals </title>
+  <statement> <p> 
+    Use the 5th degree Maclaurin Polynomial to approximate: <m>\displaystyle \int_0^1 \frac{\sin x}{x}\,dx</m>  
+  </p> 
+  </statement>
+
+  <solution>
+        <p> <alert> This solution is for instructors only and would be removed for the student facing document. The intent is for
+      this problem to be done in class together. </alert>
+    </p>
+    <p>
+      Recall:
+      <me>
+        \sin(x) \approx P_5(x) = x - \frac{x^3}{6} + \frac{x^5}{120}.
+      </me>
+      Dividing by <m>x</m> gives
+      <me>
+        \frac{\sin x}{x} \approx 1 - \frac{x^2}{6} + \frac{x^4}{120}.
+      </me>
+      Now integrate term by term from 0 to 1:
+      <me>
+        \int_0^1 \frac{\sin x}{x}\,dx \approx \int_0^1 \left(1 - \frac{x^2}{6} + \frac{x^4}{120}\right) dx.
+      </me>
+      Compute:
+      <me>
+        = \left[x - \frac{x^3}{18} + \frac{x^5}{600}\right]_0^1 = 1 - \frac{1}{18} + \frac{1}{600} \approx 0.94611.
+      </me>
+      <p> FYI: The actual value is about <m>0.94608</m>.</p>
+    </p>
+  </solution>
+  <answer>
+    <p>
+      <me>
+         1 - \frac{1}{18} + \frac{1}{600} \approx 0.94611.
+      </me>
+    </p>
+    <p> FYI: The actual value is about <m>0.94608</m>.
+    </p>
+  </answer>
+
+
+</example>
+
+<p>
+This lesson marks the beginning of a much larger journey. 
+In the next part of this chapter, we’ll dive into the details of how and when these infinite sums actually "work". We'll be
+examining convergence, divergence, and the boundaries of where our approximations hold true. 
+Some of that work will feel technical, even a little dry at times, but remember what you’ve seen today: 
+with the right tools, we can approximate the unapproachable and make sense of the impossible. </p> <p> 
+If you ever feel buried in the details, I recommend that think back to this lesson and remember what
+our end goal is!
+</p>
+
+<exercises xml:id="hw-intro-series">
+
+  <exercisegroup>
+    <title>Concept Checks (True/False)</title>
+
+    <exercise>
+      <statement>
+        <p>Mark each as True or False and give a one-sentence justification.</p>
+        <ol label="(a)">
+          <li>If two graphs lie close together near <m>x=0</m>, their function values near <m>x=0</m> are close.</li>
+          <li>Adding more terms to a Maclaurin polynomial always makes the approximation better for every <m>x</m>.</li>
+          <li>Maclaurin polynomials are designed to match <em>all</em> derivatives of the function at <m>x=0</m> (up to the degree used).</li>
+          <li>If a function has no elementary antiderivative, we cannot approximate its integral.</li>
+        </ol>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>Mark each as True or False and give a one-sentence justification.</p>
+        <ol label="(a)">
+          <li>A Maclaurin series is a power series centered at 0.</li>
+          <li>Maclaurin polynomials approximate a function best far from <m>x=0</m>.</li>
+          <li>If two Maclaurin polynomials match more derivatives at 0, the higher-degree one will match the function more closely near 0.</li>
+          <li><m>\dfrac{\sin x}{x}</m> can be expressed as a finite polynomial.</li>
+        </ol>
+      </statement>
+    </exercise>
+
+  </exercisegroup>
+
+
+  <exercisegroup>
+    <title>Applications and Calculations</title>
+
+    <exercise>
+      <statement>
+        <p>Construct the 5th-degree Maclaurin polynomial <m>P_5(x)</m> for <m>f(x)=e^x</m> by matching <m>f^{(n)}(0)</m> with <m>P^{(n)}(0)</m> for <m>n=0,\dots,5</m>.</p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>Construct the 6th-degree Maclaurin polynomial <m>P_6(x)</m> for <m>\cos x</m> using the same “match derivatives at 0” method.</p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>Use your result from Problem 1 to approximate <m>e^{0.2}</m> with <m>P_5</m>. Compare to a calculator value and report the absolute difference.</p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>Using your <m>P_6</m> from Problem 2, approximate <m>\cos(0.3)</m>. Compare to a calculator value and report the absolute difference.</p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>Starting from <m>\dfrac{1}{1-x} = 1 + x + x^2 + x^3 + \cdots</m> (for <m>|x|&lt;1</m>), integrate term-by-term to produce a series for <m>-\ln(1-x)</m>. Write the first five nonzero terms.</p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>Use your series from Problem 5 to approximate <m>\ln(1.1)</m> by keeping the first four nonzero terms (substitute <m>x=0.1</m>). Compare with a calculator and report the absolute difference.</p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>Start with <m>\dfrac{1}{1+u} = 1 - u + u^2 - u^3 + \cdots</m> for <m>|u|&lt;1</m>. Substitute <m>u=x^2</m> to get a series for <m>\dfrac{1}{1+x^2}</m>, then integrate term-by-term to obtain a series for <m>\arctan x</m>. List the first five nonzero terms.</p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>Use the first five nonzero terms from Problem 7 to approximate <m>\arctan(0.5)</m>. Compare to a calculator value and report the absolute difference.</p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>Re-derive the first five nonzero terms of the Maclaurin series for <m>\sin x</m> by matching derivatives at 0 (show the coefficient-matching steps).</p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>Using <m>P_5(x)</m> for <m>\sin x</m>, approximate <m>\sin(-0.4)</m>. Compare with a calculator and report the absolute difference.</p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>Approximate <me>\displaystyle \int_0^1 \frac{\sin x}{x}\,dx</me> by replacing <m>\dfrac{\sin x}{x}</m> with <m>1 - \dfrac{x^2}{6} + \dfrac{x^4}{120}</m> (the <m>P_5</m>-based expression). Compute the resulting polynomial integral exactly as a rational number and then as a decimal.</p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>Repeat Problem 11 using only <m>P_3</m> for <m>\sin x</m> (i.e., replace <m>\dfrac{\sin x}{x}</m> with <m>1 - \dfrac{x^2}{6}</m>). Compare the two approximations (P<sub>3</sub> vs. P<sub>5</sub>) and state which is closer to the numeric value ~0.94608.</p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>Differentiate <m>\ln(1+x)</m> repeatedly at <m>x=0</m> and match derivatives to build the first five nonzero terms of its Maclaurin series. (Confirm it agrees with Problem 5.)</p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>Suppose <m>f(x)=\cos x</m> and we posit <m>P_5(x)=a_0 + a_1x + a_2x^2 + a_3x^3 + a_4x^4 + a_5x^5</m>. Based on matching <m>f^{(n)}(0)=P^{(n)}(0)</m>, determine which coefficients must be zero and compute the nonzero ones.</p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>Using the <m>P_6(x)</m> for <m>\cos x</m> from Problem 2, estimate <m>\cos(0.8)</m>. Comment briefly on whether you expect the approximation to be better or worse at <m>x=1.6</m> and why (no formal theorem needed).</p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>Differentiate the series for <m>-\ln(1-x)</m> from Problem 5 to recover the geometric series for <m>\dfrac{1}{1-x}</m>. Show the term-by-term differentiation step.</p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>Use <m>P_4(x)</m> for <m>e^x</m> and <m>P_5(x)</m> for <m>\sin x</m> to approximate <m>e^{0.3}\sin(0.3)</m> by multiplying the two polynomials and evaluating at <m>x=0.3</m>. Compare to a calculator value.</p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>Use the first three nonzero terms of the Maclaurin series for <m>e^{-x^2}</m> (obtain from <m>e^x</m> by substitution) to approximate <me>\displaystyle \int_0^1 e^{-x^2}\,dx</me>. Compute the resulting polynomial integral exactly and as a decimal. (This integral has no elementary antiderivative.)</p>
+      </statement>
+    </exercise>
+
+  </exercisegroup>
+
+</exercises>
 
 
 </section>
