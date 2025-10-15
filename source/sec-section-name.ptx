@@ -1,8 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <section xml:id="sec-section-name" xmlns:xi="http://www.w3.org/2001/XInclude">
-  <title>Section Title</title>
+  <title>Introduction and Motivation</title>
 
-  <p> Text of section. </p>
+<objectives>
+  <ul>
+    <li>Recognize that not all functions have antiderivatives that can be expressed in closed form.</li>
+    <li>Understand that infinite polynomials (series) can be used to represent and approximate functions.</li>
+    <li>Construct an infinite polynomial by matching derivatives at <m> x = 0 </m> to determine the coefficients .</li>
+    <li>Understand how series provide new ways to compute, approximate, and analyze functions when algebraic or calculus methods fail.</li>
+    <li>Apply series representations to approximate integrals that cannot be expressed in closed form.</li>
+  </ul>
+</objectives>
+
+<activity xml:id="intro-series-hook">
+  <title>10 - minute Warmup</title>
+  <introduction>
+    <p>
+      To begin our exploration of infinite series, let's consider the integral <me>\int \frac{\sin x}{x}\,dx</me>.
+    </p>
+  </introduction>
+
+    <task>
+
+    <statement>
+    <p> 
+      Working with a partner (a nearby neighbor) each person try to evaluate the integral using 
+      one or two of our integration techniques we have learned so far. 
+      <ul>
+        <li>U-Substitution</li>
+        <li>Integration by Parts</li>
+        <li>Triginometric Substitution</li>
+        <li>Partial Fractions</li>
+      </ul>
+    </p>
+    </statement>
+  </task>
+  <task>
+    <statement>
+      <p>
+        Discuss! Were you able to make any progress? Once you have throroughly tried the problem and discussed, feel free to look at the <alert>Solution</alert> below. 
+       </p>
+    </statement>
+    <solution>
+      <p>
+        It turns out the integral, <m>\displaystyle \int \dfrac{\sin x}{x}~dx</m>, does <em>not</em> have a closed-form antiderivative that can be expressed using elementary functions. 
+        In fact, it defines a new function called the <term>sine integral</term>, often written as <m>\operatorname{Si}(x)</m>.
+      </p>
+
+
+      <figure xml:id="wolfram1">
+        <caption>Showing the result of <m>\displaystyle \int \dfrac{\sin x}{x}~dx</m> in Wolfram Alpha</caption>
+  <sidebyside widths="80%">
+    <image source="images/si(x).png" />
+  </sidebyside>
+</figure>
+
+
+      <p>
+        So, what can we do when integration fails to give us a simple formula?
+        This is where the idea of representing a function as an <term>infinite polynomial</term>—a power series—comes in.
+      </p>
+    </solution>
+  </task>
+
+
+
+
+</activity>
+
+
+
 
 </section>
