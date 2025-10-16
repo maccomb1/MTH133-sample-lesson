@@ -521,22 +521,35 @@ our end goal is!
       </p>
     </introduction>
 
+
+        <exercise>
+      <statement>
+        <p> Every function has a Maclaurin series
+        </p></statement>
+    </exercise>
+
     <exercise>
       <statement>
         <p> If <m>f(x)</m> has a Maclaurin series <m>P(x) = a_0 + a_1x + a_2x^2 + a_3x^3 + \cdots</m>, then <m>f'''(0) = a_3.</m>
         </p></statement>
     </exercise>
 
-    <exercise>
+<exercise>
       <statement>
-        <p>Mark each as True or False and give a one-sentence justification.</p>
-        <ol>
-          <li>A Maclaurin series is a power series centered at 0.</li>
-          <li>Maclaurin polynomials approximate a function best far from <m>x=0</m>.</li>
-          <li>If two Maclaurin polynomials match more derivatives at 0, the higher-degree one will match the function more closely near 0.</li>
-          <li><m>\dfrac{\sin x}{x}</m> can be expressed as a finite polynomial.</li>
-        </ol>
-      </statement>
+        <p> Suppose <m>f(x)</m> has a 5th-degree Maclaurin polynomial <m>P_5(x)</m>. Then <m>f(1)</m> is likely closer 
+          to <m>P_5(1)</m> than <m>f(2)</m> is to <m>P_5(2)</m>.
+    
+
+        </p></statement>
+    </exercise>
+
+<exercise>
+      <statement>
+        <p> The 2nd-degree Maclaurin polynomial <m>P_2(x)</m> for <m>f(x)</m> is given by the equation:
+          <me>P_2(x) = f(0) + f'(0) x + \dfrac{f''(0)}{2} x^2</me>
+          
+
+        </p></statement>
     </exercise>
 
   </exercisegroup>
@@ -545,113 +558,101 @@ our end goal is!
   <exercisegroup>
     <title>Applications and Calculations</title>
 
+
+
     <exercise>
       <statement>
-        <p>Construct the 5th-degree Maclaurin polynomial <m>P_5(x)</m> for <m>f(x)=e^x</m> by matching <m>f^{(n)}(0)</m> with <m>P^{(n)}(0)</m> for <m>n=0,\dots,5</m>.</p>
+        
+        <p> Consider the function <m>f(x)=\cos(x)</m></p>
+        <ol marker = "(a)">
+          <li>
+            <p>
+              Construct the 6th-degree Maclaurin polynomial <m>P_6(x)</m> for <m>f</m>.      
+            </p>
+          </li>
+          <li>
+            <p>
+              Approximate <m>\cos(0.3)</m> with <m>P_6</m>. Compare to a calculator value and report the absolute difference.     
+            </p>
+          </li>
+          <li>
+            <p>
+              Comment briefly on whether you expect the approximation to be better or worse at <m>x=0.7</m> and why (no formal theorem needed)
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+
+    <exercise xml:id="ex-eu">
+      <statement>
+        
+        <p> Consider the function <m>f(u)=e^u</m></p>
+        <ol marker = "(a)">
+          <li>
+            <p>
+              Construct the 5th-degree Maclaurin polynomial <m>P_5(u)</m> for <m>f</m>.      
+            </p>
+          </li>
+          <li>
+            <p>
+              Approximate <m>e^{0.2}</m> with <m>P_5</m>. Compare to a calculator value and report the absolute difference.     
+            </p>
+          </li>
+          
+        </ol>
       </statement>
     </exercise>
 
     <exercise>
-      <statement>
-        <p>Construct the 6th-degree Maclaurin polynomial <m>P_6(x)</m> for <m>\cos x</m> using the same “match derivatives at 0” method.</p>
+      <statement>    
+        <p> Consider the function <m>f(x)=e^{-x^2}</m></p>
+        <ol marker = "(a)">
+          <li>
+            <p>
+              Substitute <m>u=-x^2</m> into your result from <xref ref="ex-eu" /> to create the 10th-degree Maclaurin polynomial for <m>f</m>.      
+            </p>
+          </li>
+          <li>
+              <p>Use your result from (a) to approximate <me>\displaystyle \int_0^1 e^{-x^2}\,dx</me> (This integral has no elementary antiderivative.)</p>
+   
+          </li>
+          
+        </ol>
       </statement>
     </exercise>
 
-    <exercise>
-      <statement>
-        <p>Use your result from Problem 1 to approximate <m>e^{0.2}</m> with <m>P_5</m>. Compare to a calculator value and report the absolute difference.</p>
-      </statement>
-    </exercise>
 
     <exercise>
       <statement>
-        <p>Using your <m>P_6</m> from Problem 2, approximate <m>\cos(0.3)</m>. Compare to a calculator value and report the absolute difference.</p>
+        
+        <p> Consider the function <m>f(x)=\dfrac{1}{1-x}</m></p>
+        <ol marker = "(a)">
+          <li>
+            <p>
+              Construct the 4th-degree Maclaurin polynomial <m>P_4(x)</m> for <m>f</m>.      
+            </p>
+          </li>
+          <li>
+            <p>
+              Hypothesize a formula for the infinite Maclaurin Series. What will the coefficent be in front of <m>x^{2025}</m>? 
+            </p>
+          </li>
+
+
+          <li>
+        <p>Integrate term-by-term to produce a power series for <m>-\ln(1-x)</m>. Write the first five nonzero terms.</p>
+          </li>
+          <li>
+       <p>Use your polynomial from (c) to approximate <m>\ln(1.1)</m>. Compare with a calculator and report the absolute difference.</p>
+              
+          </li>
+        </ol>
       </statement>
     </exercise>
 
-    <exercise>
-      <statement>
-        <p>Starting from <m>\dfrac{1}{1-x} = 1 + x + x^2 + x^3 + \cdots</m> (for <m>|x|&lt;1</m>), integrate term-by-term to produce a series for <m>-\ln(1-x)</m>. Write the first five nonzero terms.</p>
-      </statement>
-    </exercise>
 
-    <exercise>
-      <statement>
-        <p>Use your series from Problem 5 to approximate <m>\ln(1.1)</m> by keeping the first four nonzero terms (substitute <m>x=0.1</m>). Compare with a calculator and report the absolute difference.</p>
-      </statement>
-    </exercise>
 
-    <exercise>
-      <statement>
-        <p>Start with <m>\dfrac{1}{1+u} = 1 - u + u^2 - u^3 + \cdots</m> for <m>|u|&lt;1</m>. Substitute <m>u=x^2</m> to get a series for <m>\dfrac{1}{1+x^2}</m>, then integrate term-by-term to obtain a series for <m>\arctan x</m>. List the first five nonzero terms.</p>
-      </statement>
-    </exercise>
-
-    <exercise>
-      <statement>
-        <p>Use the first five nonzero terms from Problem 7 to approximate <m>\arctan(0.5)</m>. Compare to a calculator value and report the absolute difference.</p>
-      </statement>
-    </exercise>
-
-    <exercise>
-      <statement>
-        <p>Re-derive the first five nonzero terms of the Maclaurin series for <m>\sin x</m> by matching derivatives at 0 (show the coefficient-matching steps).</p>
-      </statement>
-    </exercise>
-
-    <exercise>
-      <statement>
-        <p>Using <m>P_5(x)</m> for <m>\sin x</m>, approximate <m>\sin(-0.4)</m>. Compare with a calculator and report the absolute difference.</p>
-      </statement>
-    </exercise>
-
-    <exercise>
-      <statement>
-        <p>Approximate <me>\displaystyle \int_0^1 \frac{\sin x}{x}\,dx</me> by replacing <m>\dfrac{\sin x}{x}</m> with <m>1 - \dfrac{x^2}{6} + \dfrac{x^4}{120}</m> (the <m>P_5</m>-based expression). Compute the resulting polynomial integral exactly as a rational number and then as a decimal.</p>
-      </statement>
-    </exercise>
-
-    <exercise>
-      <statement>
-        <p>Repeat Problem 11 using only <m>P_3</m> for <m>\sin x</m> (i.e., replace <m>\dfrac{\sin x}{x}</m> with <m>1 - \dfrac{x^2}{6}</m>). Compare the two approximations (P<sub>3</sub> vs. P<sub>5</sub>) and state which is closer to the numeric value ~0.94608.</p>
-      </statement>
-    </exercise>
-
-    <exercise>
-      <statement>
-        <p>Differentiate <m>\ln(1+x)</m> repeatedly at <m>x=0</m> and match derivatives to build the first five nonzero terms of its Maclaurin series. (Confirm it agrees with Problem 5.)</p>
-      </statement>
-    </exercise>
-
-    <exercise>
-      <statement>
-        <p>Suppose <m>f(x)=\cos x</m> and we posit <m>P_5(x)=a_0 + a_1x + a_2x^2 + a_3x^3 + a_4x^4 + a_5x^5</m>. Based on matching <m>f^{(n)}(0)=P^{(n)}(0)</m>, determine which coefficients must be zero and compute the nonzero ones.</p>
-      </statement>
-    </exercise>
-
-    <exercise>
-      <statement>
-        <p>Using the <m>P_6(x)</m> for <m>\cos x</m> from Problem 2, estimate <m>\cos(0.8)</m>. Comment briefly on whether you expect the approximation to be better or worse at <m>x=1.6</m> and why (no formal theorem needed).</p>
-      </statement>
-    </exercise>
-
-    <exercise>
-      <statement>
-        <p>Differentiate the series for <m>-\ln(1-x)</m> from Problem 5 to recover the geometric series for <m>\dfrac{1}{1-x}</m>. Show the term-by-term differentiation step.</p>
-      </statement>
-    </exercise>
-
-    <exercise>
-      <statement>
-        <p>Use <m>P_4(x)</m> for <m>e^x</m> and <m>P_5(x)</m> for <m>\sin x</m> to approximate <m>e^{0.3}\sin(0.3)</m> by multiplying the two polynomials and evaluating at <m>x=0.3</m>. Compare to a calculator value.</p>
-      </statement>
-    </exercise>
-
-    <exercise>
-      <statement>
-        <p>Use the first three nonzero terms of the Maclaurin series for <m>e^{-x^2}</m> (obtain from <m>e^x</m> by substitution) to approximate <me>\displaystyle \int_0^1 e^{-x^2}\,dx</me>. Compute the resulting polynomial integral exactly and as a decimal. (This integral has no elementary antiderivative.)</p>
-      </statement>
-    </exercise>
 
   </exercisegroup>
 
