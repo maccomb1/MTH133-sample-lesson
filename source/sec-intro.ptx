@@ -5,11 +5,11 @@
 
 <objectives>
   <ul>
-    <li>Recognize that not all functions have antiderivatives that can be expressed in closed form.</li>
-    <li>Understand that infinite polynomials (series) can be used to represent and approximate functions.</li>
-    <li>Construct an infinite polynomial by matching derivatives at <m> x = 0 </m> to determine the coefficients .</li>
-    <li>Understand how series provide new ways to compute, approximate, and analyze functions when algebraic or calculus methods fail.</li>
-    <li>Apply series representations to approximate integrals that cannot be expressed in closed form.</li>
+    <li>Have a semi-relaxing day after your recent exam. Today’s focus is on exploring ideas.</li>
+    <li>Get introduced to the idea of an "infinite polynomial" and see how it can be used in place of a more complicated function.</li>
+    <li>Work through how to build part of an infinite polynomial for <m>\sin(x)</m>.</li>
+    <li>See how these polynomials can approximate real function values and even estimate tricky integrals.</li>
+    <li>Leave class with a sense of where we're headed for this upcoming Chapter.</li>
   </ul>
 </objectives>
 
@@ -164,7 +164,7 @@ This idea leads us to the concept of an <term>infinite polynomial</term>, more f
 
 
 <definition xml:id="def-power-series-0">
-  <title>Power Series Centered at 0</title>
+  <title>Power Series</title>
   <statement>
     <p>
       A <term>power series</term> is an infinite polynomial  of the form
@@ -503,10 +503,9 @@ but even the integral that started our entire discussion.
 
 <p>
 This lesson marks the beginning of a much larger journey. 
-In the next part of this chapter, we’ll dive into the details of how and when these infinite sums actually "work". We'll be
+In the next part of this chapter, we'll dive into the details of how and when these infinite sums actually "work". We'll be
 examining convergence, divergence, and the boundaries of where our approximations hold true. 
-Some of that work will feel technical, even a little dry at times, but remember what you’ve seen today: 
-with the right tools, we can approximate the unapproachable and make sense of the impossible. </p> <p> 
+Some of that work will feel technical, even a little dry at times, but remember what you've seen today</p> <p> 
 If you ever feel buried in the details, I recommend that think back to this lesson and remember what
 our end goal is!
 </p>
@@ -577,7 +576,7 @@ our end goal is!
           </li>
           <li>
             <p>
-              Comment briefly on whether you expect the approximation to be better or worse at <m>x=0.7</m> and why (no formal theorem needed)
+              Comment briefly on whether you expect the approximation to be better or worse at <m>x=0.7</m> than at <m>x=0.3</m> (from part(b))and why. 
             </p>
           </li>
         </ol>
