@@ -193,7 +193,7 @@ This idea leads us to the concept of an <term>infinite polynomial</term>, more f
     <p>
       A <term>Maclaurin series</term> is a specific type of power series. When creating a Maclaurin series, each coefficient 
       is determined 
-      so that the polynomial and the original function share the same value and <em>all</em> matching derivatives at <m>x = 0</m>. 
+      so that the polynomial and the original function share the same value and <em>all</em> derivatives match when <m>x = 0</m>. 
       This ensures that the series “behaves like” the function near the origin.
     </p>
   </statement>
@@ -340,7 +340,7 @@ Stopping after a certain number of terms and using that polynomial to approximat
   <task>
     <statement>
       <p>
-        Open <url href="https://www.desmos.com/calculator/jxah1hzkwn">Desmos Graphing Calculator</url>. 
+        Open this <url href="https://www.desmos.com/calculator/jxah1hzkwn">Desmos file</url>. 
       </p>
       <p>
         <ul>
@@ -515,17 +515,16 @@ our end goal is!
 
   <exercisegroup>
     <title>Concept Checks (True/False)</title>
-
+    <introduction>
+      <p>
+        Determine if the following statements are true or false. Justify your answer.
+      </p>
+    </introduction>
+    
     <exercise>
       <statement>
-        <p>Mark each as True or False and give a one-sentence justification.</p>
-        <ol label="(a)">
-          <li>If two graphs lie close together near <m>x=0</m>, their function values near <m>x=0</m> are close.</li>
-          <li>Adding more terms to a Maclaurin polynomial always makes the approximation better for every <m>x</m>.</li>
-          <li>Maclaurin polynomials are designed to match <em>all</em> derivatives of the function at <m>x=0</m> (up to the degree used).</li>
-          <li>If a function has no elementary antiderivative, we cannot approximate its integral.</li>
-        </ol>
-      </statement>
+        <p> If <m>f(x)</m> has a Maclaurin series <m>P(x) = a_0 + a_1x + a_2x^2 + a_3x^3 + \cdots</m>, then <m>f'''(0) = a_3.</m>
+        </p></statement>
     </exercise>
 
     <exercise>

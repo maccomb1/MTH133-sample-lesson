@@ -13,7 +13,7 @@
 -->
    
 <!-- Include chapters -->
-    <xi:include href="./ch-seriew.ptx" />
+    <xi:include href="./ch-series.ptx" />
 
 
     <!-- Include backmatter 
